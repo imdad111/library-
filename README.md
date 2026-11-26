@@ -1,1 +1,1 @@
-# library-
+My primary focus of this project will the core idea i may not focus much in vanila css 

@@ -1,0 +1,226 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #fdf2f8;
+    --header-bg: #f9a8d4;
+    --primary: #7c3aed;
+    --primary-dark: #6d28d9;
+    --danger: #ef4444;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --radius: 12px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+main {
+    font-family: "Comic Sans MS", "Segoe Print", cursive;
+    
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+/* ---------- Header ---------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.title {
+    font-size: clamp(20px, 2vw + 12px, 40px);
+}
+
+/* ---------- Buttons ---------- */
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+}
+
+button:focus-visible {
+    outline: 3px solid #c4b5fd;
+    outline-offset: 2px;
+}
+
+/* ---------- Content grid ---------- */
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content:empty::before {
+    content: "No books yet. Click “Add Book” to get started!";
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--muted);
+    padding: 4rem 0;
+}
+
+/* ---------- Card ---------- */
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    border-top: 5px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card h2,
+.card h3,
+.card-title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+.card-author {
+    font-style: italic;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+}
+
+.card-actions button {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.remove-btn {
+    background-color: var(--danger);
+}
+
+.remove-btn:hover {
+    background-color: #dc2626;
+}
+
+/* Optional: when a book is marked as read */
+.card.read {
+    border-top-color: #22c55e;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+    header {
+        padding: 0.75rem 1rem;
+    }
+
+    .content {
+        padding: 1rem;
+    }
+}
+
+/* ---------- Dialog / Form ---------- */
+dialog {
+    margin: auto;
+    border: none;
+    border-radius: var(--radius);
+    padding: 1.5rem 2rem;
+    width: min(420px, 90vw);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    font-family: "Comic Sans MS", "Segoe Print", cursive;
+  
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  /
+}
+
+#book-form h2 {
+    margin-bottom: 0.5rem;
+}
+
+#book-form label {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+#book-form input[type="text"],
+#book-form input[type="number"] {
+    padding: 0.6em 0.8em;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+#book-form input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+#book-form .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    color: var(--text);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.cancel-btn {
+    background-color: #9ca3af;
+}
+
+.cancel-btn:hover {
+    background-color: #6b7280;
+}
